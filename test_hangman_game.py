@@ -51,7 +51,7 @@ def test_game_with_one_correct_guess():
     game = HangmanGame(['Python'])
     attempt = game.guess('y')
 
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 5
     assert game.previous_guesses == ['y']
     assert game.word.masked == '*y****'
@@ -61,7 +61,7 @@ def test_game_with_two_correct_guesses_same_move():
     game = HangmanGame(['rmotr'])
     attempt = game.guess('r')
 
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 5
     assert game.previous_guesses == ['r']
     assert game.word.masked == 'r***r'
@@ -71,7 +71,7 @@ def test_game_with_one_incorrect_guess():
     game = HangmanGame(['Python'])
     attempt = game.guess('x')  # Miss!
 
-    assert attempt.is_miss() is True
+    assert attempt.is_miss is True
     assert game.remaining_misses == 4
     assert game.previous_guesses == ['x']
     assert game.word.masked == '******'
@@ -81,13 +81,13 @@ def test_game_with_several_incorrect_guesses():
     game = HangmanGame(['Python'])
 
     attempt = game.guess('x')  # Miss!
-    assert attempt.is_miss() is True
+    assert attempt.is_miss is True
     assert game.remaining_misses == 4
     assert game.previous_guesses == ['x']
     assert game.word.masked == '******'
 
     attempt = game.guess('z')  # Miss!
-    assert attempt.is_miss() is True
+    assert attempt.is_miss is True
     assert game.remaining_misses == 3
     assert game.previous_guesses == ['x', 'z']
     assert game.word.masked == '******'
@@ -97,19 +97,19 @@ def test_game_with_several_correct_guesses():
     game = HangmanGame(['Python'])
 
     attempt = game.guess('y')
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 5
     assert game.previous_guesses == ['y']
     assert game.word.masked == '*y****'
 
     attempt = game.guess('o')
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 5
     assert game.previous_guesses == ['y', 'o']
     assert game.word.masked == '*y**o*'
 
     attempt = game.guess('t')
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 5
     assert game.previous_guesses == ['y', 'o', 't']
     assert game.word.masked == '*yt*o*'
@@ -119,13 +119,13 @@ def test_game_with_several_correct_and_incorrect_guesses():
     game = HangmanGame(['Python'])
 
     attempt = game.guess('y')
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 5
     assert game.previous_guesses == ['y']
     assert game.word.masked == '*y****'
 
     attempt = game.guess('x')  # Miss!
-    assert attempt.is_miss() is True
+    assert attempt.is_miss is True
     assert game.remaining_misses == 4
     assert game.previous_guesses == ['y', 'x']
     assert game.word.masked == '*y****'
@@ -137,7 +137,7 @@ def test_game_with_several_correct_and_incorrect_guesses():
     assert game.word.masked == '*y**o*'
 
     attempt = game.guess('z')
-    assert attempt.is_miss() is True
+    assert attempt.is_miss is True
     assert game.remaining_misses == 3
     assert game.previous_guesses == ['y', 'x', 'o', 'z']
     assert game.word.masked == '*y**o*'
@@ -147,13 +147,13 @@ def test_guess_word_is_case_insensitve():
     game = HangmanGame(['Python'])
 
     attempt = game.guess('p')
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 5
     assert game.previous_guesses == ['p']
     assert game.word.masked == 'p*****'
 
     attempt = game.guess('N')
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 5
     assert game.previous_guesses == ['p', 'n']
     assert game.word.masked == 'p****n'
@@ -193,7 +193,7 @@ def test_game_wins_several_moves_repeated_words():
     game = HangmanGame(['aba'])
 
     attempt = game.guess('a')
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 5
     assert game.previous_guesses == ['a']
     assert game.word.masked == 'a*a'
@@ -214,13 +214,13 @@ def test_game_wins_several_moves():
     game = HangmanGame(['abc'])
 
     attempt = game.guess('a')
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 5
     assert game.previous_guesses == ['a']
     assert game.word.masked == 'a**'
 
     attempt = game.guess('c')
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 5
     assert game.previous_guesses == ['a', 'c']
     assert game.word.masked == 'a*c'
@@ -241,25 +241,25 @@ def test_game_wins_several_moves_some_misses():
     game = HangmanGame(['abc'])
 
     attempt = game.guess('a')
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 5
     assert game.previous_guesses == ['a']
     assert game.word.masked == 'a**'
 
     attempt = game.guess('x')  # Miss!
-    assert attempt.is_miss() is True
+    assert attempt.is_miss is True
     assert game.remaining_misses == 4
     assert game.previous_guesses == ['a', 'x']
     assert game.word.masked == 'a**'
 
     attempt = game.guess('c')
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 4
     assert game.previous_guesses == ['a', 'x', 'c']
     assert game.word.masked == 'a*c'
 
     attempt = game.guess('z')  # Miss!
-    assert attempt.is_miss() is True
+    assert attempt.is_miss is True
     assert game.remaining_misses == 3
     assert game.previous_guesses == ['a', 'x', 'c', 'z']
     assert game.word.masked == 'a*c'
@@ -280,13 +280,13 @@ def test_game_loses_several_guesses():
     game = HangmanGame(['Python'], number_of_guesses=3)
 
     attempt = game.guess('x')  # Miss!
-    assert attempt.is_miss() is True
+    assert attempt.is_miss is True
     assert game.remaining_misses == 2
     assert game.previous_guesses == ['x']
     assert game.word.masked == '******'
 
     attempt = game.guess('z')  # Miss!
-    assert attempt.is_miss() is True
+    assert attempt.is_miss is True
     assert game.remaining_misses == 1
     assert game.previous_guesses == ['x', 'z']
     assert game.word.masked == '******'
@@ -307,25 +307,25 @@ def test_game_loses_with_some_correct_guesses():
     game = HangmanGame(['Python'], number_of_guesses=3)
 
     attempt = game.guess('y')
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 3
     assert game.previous_guesses == ['y']
     assert game.word.masked == '*y****'
 
     attempt = game.guess('x')  # Miss!
-    assert attempt.is_miss() is True
+    assert attempt.is_miss is True
     assert game.remaining_misses == 2
     assert game.previous_guesses == ['y', 'x']
     assert game.word.masked == '*y****'
 
     attempt = game.guess('z')  # Miss!
-    assert attempt.is_miss() is True
+    assert attempt.is_miss is True
     assert game.remaining_misses == 1
     assert game.previous_guesses == ['y', 'x', 'z']
     assert game.word.masked == '*y****'
 
     attempt = game.guess('t')
-    assert attempt.is_hit() is True
+    assert attempt.is_hit is True
     assert game.remaining_misses == 1
     assert game.previous_guesses == ['y', 'x', 'z', 't']
     assert game.word.masked == '*yt***'

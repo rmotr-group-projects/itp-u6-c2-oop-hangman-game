@@ -47,7 +47,7 @@ def main():
                 print("\t Your guess is incorrect. Please guess again.")
                 continue
 
-            if attempt.is_hit():
+            if attempt.is_hit:
                 print("\tCongratulations! That's correct.")
             else:
                 print("\t:( That's a miss!")
