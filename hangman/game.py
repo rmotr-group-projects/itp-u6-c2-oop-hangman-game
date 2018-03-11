@@ -16,14 +16,10 @@ class GuessAttempt(object):
         self.miss = miss
 
     def is_hit(self):
-        if self.hit:
-            return True
-        return False
+        return bool(self.hit)
 
     def is_miss(self):
-        if self.miss:
-            return True
-        return False
+        return bool(self.miss)
 
 
 class GuessWord(object):
@@ -100,19 +96,13 @@ class HangmanGame(object):
         return attempt
 
     def is_finished(self):
-        if self.is_won() or self.is_lost():
-            return True
-        return False
+        return self.is_won() or self.is_lost()
 
     def is_won(self):
-        if self.word.masked == self.word.answer:
-            return True
-        return False
+        return self.word.masked == self.word.answer
 
     def is_lost(self):
-        if self.word.masked != self.word.answer and self.remaining_misses < 1:
-            return True
-        return False
+        return self.word.masked != self.word.answer and self.remaining_misses < 1
 
     @classmethod
     def select_random_word(cls, words):
