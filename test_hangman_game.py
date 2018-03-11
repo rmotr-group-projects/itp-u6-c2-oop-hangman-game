@@ -44,7 +44,7 @@ def test_start_new_game_initial_state_with_default_word_list():
     assert isinstance(game.word, GuessWord)
     assert game.previous_guesses == []
 
-    assert game.word.answer in HangmanGame.WORD_LIST
+    assert game.word._word in HangmanGame.WORD_LIST
 
 
 def test_game_with_one_correct_guess():
