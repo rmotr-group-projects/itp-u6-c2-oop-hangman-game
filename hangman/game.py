@@ -56,7 +56,7 @@ class GuessWord(object):
 
 class HangmanGame(object):
     
-    WORD_LIST = ['fish', 'phone', 'fly']
+    WORD_LIST = ['fish', 'phone', 'apple']
     
     def __init__(self, list_of_words=[], number_of_guesses=5):
         #self.list_of_words = list_of_words
