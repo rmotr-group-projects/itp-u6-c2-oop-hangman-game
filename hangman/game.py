@@ -23,7 +23,7 @@ class GuessAttempt(object):
 
 class GuessWord(object):
     def __init__(self, word):
-        if len(word) == 0:
+        if not word:
             raise InvalidWordException()
         self.answer = word
         self.masked = len(word) * '*'
