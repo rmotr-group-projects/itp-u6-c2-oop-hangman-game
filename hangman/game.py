@@ -28,6 +28,10 @@ class GuessWord(object):
         self.answer = word
         self.masked = len(word) * '*'
 
+    def perform_attempt(self, character):
+        if len(character) > 1:
+            raise InvalidGuessedLetterException()
+
 
 class HangmanGame(object):
     pass
