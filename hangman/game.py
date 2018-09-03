@@ -24,19 +24,38 @@ class GuessAttempt(object):
 class GuessWord(object):
     def __init__(self, word):
         if not word:
-            raise InvalidWordException()
+            raise InvalidWordException
         self.answer = word
-        self.masked = len(word) * '*'
+        self.masked = '*' * len(word)
+
+    def unveil_word(self, letter):
+        s = ''
+        for idx in range(len(self.answer)):
+            word_letter = self.answer[idx]
+            mask_letter = self.masked[idx]
+
+            if mask_letter != '*':
+                s += mask_letter
+            elif letter == word_letter.lower():
+                s += word_letter.lower()
+            else:
+                s += '*'
+        return s
 
     def perform_attempt(self, letter):
         if len(letter) > 1:
-            raise InvalidGuessedLetterException()
-
-        if letter in self.answer:
-            attemp = GuessAttempt(letter, hit=True)
+            raise InvalidGuessedLetterException
+        
+        letter = letter.lower()
+        if letter in self.answer.lower():
+            attempt = GuessAttempt(letter, hit=True)
+            self.masked = self.unveil_word(letter)
         else:
-            attemp = GuessAttempt(letter, miss=True)
-        return attemp
+            attempt = GuessAttempt(letter, miss=True)
+        return attempt
+
+
+
 
 
 class HangmanGame(object):
