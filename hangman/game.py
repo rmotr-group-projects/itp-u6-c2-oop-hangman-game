@@ -22,7 +22,9 @@ class GuessAttempt(object):
 
 
 class GuessWord(object):
-    pass
+    def __init__(self, word):
+        self.answer = word
+        self.masked = len(word) * '*'
 
 
 class HangmanGame(object):
