@@ -73,23 +73,22 @@ class HangmanGame(object):
         letter = letter.lower()
 
         if self.is_finished():
-            raise GameFinishedException()
+            raise GameFinishedException() 
+  
+        if letter in self.previous_guesses:
+            raise InvalidGuessedLetterException()
 
         self.previous_guesses.append(letter)
 
         attempt = self.word.perform_attempt(letter)
         if attempt.is_miss():
             self.remaining_misses -= 1
-            if self.is_lost:
-                raise GameLostException
 
         if self.is_won():
             raise GameWonException()
-        elif self.is_lost():
+
+        if self.is_lost():
             raise GameLostException
-        elif self.is_finished():
-            raise GameFinishedException
- 
         
         return attempt
 
