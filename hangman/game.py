@@ -70,6 +70,7 @@ class HangmanGame(object):
         self.previous_guesses = []
 
     def guess(self, letter):
+        letter = letter.lower()
         self.previous_guesses.append(letter)
         attempt = self.word.perform_attempt(letter)
         if attempt.is_miss():
