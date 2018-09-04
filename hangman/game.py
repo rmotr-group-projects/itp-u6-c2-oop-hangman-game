@@ -72,6 +72,8 @@ class HangmanGame(object):
     def guess(self, letter):
         self.previous_guesses.append(letter)
         attempt = self.word.perform_attempt(letter)
+        if attempt.is_miss():
+            self.remaining_misses -= 1
         
         return attempt
 
