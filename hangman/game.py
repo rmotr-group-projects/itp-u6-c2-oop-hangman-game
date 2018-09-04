@@ -70,9 +70,9 @@ class HangmanGame(object):
         self.previous_guesses = []
 
     def guess(self, letter):
-        attempt = self.word.perform_attempt(letter)
-
         self.previous_guesses.append(letter)
+        attempt = self.word.perform_attempt(letter)
+        
         return attempt
 
     
