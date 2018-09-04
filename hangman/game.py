@@ -59,11 +59,14 @@ class GuessWord(object):
 
 
 class HangmanGame(object):
+
+    WORD_LIST = ['rmotr', 'python', 'awesome']
     
-    def __init__(self, word_list, number_of_guesses):
+    def __init__(self, word_list=None, number_of_guesses=5):
+        if not word_list:
+            word_list = self.WORD_LIST
+        self.word = GuessWord(self.select_random_word(word_list))
         self.remaining_misses = number_of_guesses
-        selected_word = self.select_random_word(word_list)
-        self.word = GuessWord(selected_word)
         self.previous_guesses = []
 
     
