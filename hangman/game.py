@@ -1,5 +1,5 @@
 from .exceptions import *
-
+import random
 
 class GuessAttempt(object):
     def __init__(self, letter, hit=None, miss=None):
@@ -59,4 +59,16 @@ class GuessWord(object):
 
 
 class HangmanGame(object):
-    pass
+    
+    def __init__(self, word_list, number_of_guesses):
+        self.remaining_misses = number_of_guesses
+        selected_word = self.select_random_word(word_list)
+        self.word = GuessWord(selected_word)
+        self.previous_guesses = []
+
+    
+    @classmethod
+    def select_random_word(cls, word_list):
+        if not word_list:
+            raise InvalidListOfWordsException
+        return random.choice(word_list)
