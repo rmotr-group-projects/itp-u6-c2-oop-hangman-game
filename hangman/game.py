@@ -69,6 +69,12 @@ class HangmanGame(object):
         self.remaining_misses = number_of_guesses
         self.previous_guesses = []
 
+    def guess(self, letter):
+        attempt = self.word.perform_attempt(letter)
+
+        self.previous_guesses.append(letter)
+        return attempt
+
     
     @classmethod
     def select_random_word(cls, word_list):
