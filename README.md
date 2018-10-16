@@ -102,7 +102,7 @@ assert word.masked == 'x**'
 $ py.test test_guess_attempt.py
 ```
 
-`GuessAttempt` objects are returned when an attempt is performed on a `GuessWord` object, they shouldn't be constructed manually outside of the `GuessWord.perform_attempt` method. A `GuessAttempt` has two methods `is_hit()` and `is_miss()` depending on the result of the attempt:
+`GuessAttempt` objects are returned when an attempt is performed on a `GuessWord` object, they shouldn't be constructed manually outside of the `GuessWord.perform_attempt` method. *Note:* This is essentially a **dumb** class, it has no knowledge about the state of the game, what the words are or anything. All the game logic about guess attempts should be handled in the `GuessWord.perform_attempt` method which in turn will return a `GuessAttempt` object. A `GuessAttempt` has two methods `is_hit()` and `is_miss()` depending on the result of the attempt:
 
 ```python
 word = GuessWord('xyz')
