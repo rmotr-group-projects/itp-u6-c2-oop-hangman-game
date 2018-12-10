@@ -115,18 +115,3 @@ attempt = word.perform_attempt('a')  # Miss!
 assert attempt.is_miss() is True
 assert attempt.is_hit() is False
 ```
-
-
-# Play the game!
-
-As usual, you can use the `main.py` script to play the game once it's resolved.
-
-
-<p align="center">
-  <b><a href="https://www.youtube.com/watch?v=iEEazSy67sQ&feature=youtu.be">
-    <img src="https://i.ytimg.com/vi/iEEazSy67sQ/hqdefault.jpg"></a></b>
-</p>
-<p align="center">
-  <i><a href="https://www.youtube.com/watch?v=iEEazSy67sQ&feature=youtu.be">
-    Complete Walkthrough solution</a></i>
-</p>
