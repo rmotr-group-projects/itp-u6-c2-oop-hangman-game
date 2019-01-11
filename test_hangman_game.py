@@ -36,6 +36,7 @@ def test_start_new_game_initial_state_with_default_attempts():
     assert game.previous_guesses == []
 
 
+# PICKUP
 def test_start_new_game_initial_state_with_default_word_list():
     assert HangmanGame.WORD_LIST == ['rmotr', 'python', 'awesome']
     game = HangmanGame()
@@ -44,7 +45,7 @@ def test_start_new_game_initial_state_with_default_word_list():
     assert isinstance(game.word, GuessWord)
     assert game.previous_guesses == []
 
-    assert game.word.answer in HangmanGame.WORD_LIST
+    assert game.word.answer in HangmanGame.WORD_LIST  # can't have an answer without making it first
 
 
 def test_game_with_one_correct_guess():
