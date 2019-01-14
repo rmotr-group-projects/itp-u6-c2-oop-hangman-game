@@ -18,7 +18,7 @@ def test_select_random_word_with_many_words():
 def test_select_random_word_with_empty_list():
     with pytest.raises(InvalidListOfWordsException):
         HangmanGame.select_random_word([])
-
+ 
 
 def test_start_new_game_initial_state_with_number_of_guesses():
     game = HangmanGame(['Python'], number_of_guesses=3)
