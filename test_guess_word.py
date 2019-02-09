@@ -3,26 +3,26 @@ from hangman.game import GuessWord
 from hangman.exceptions import *
 
 
-def test_guessed_word_interface():
+def test_guessed_word_interface(): #pass
     word = GuessWord('xyz')
     assert word.answer == 'xyz'
     assert word.masked == '***'
 
 
-def test_guess_word_with_empty_word():
+def test_guess_word_with_empty_word(): #pass
     """Words are empty."""
     with pytest.raises(InvalidWordException):
         GuessWord('')
 
 
-def test_guess_word_with_invalid_character():
+def test_guess_word_with_invalid_character(): #pass
     """Character to guess has len() > 1."""
     word = GuessWord('aaa')
     with pytest.raises(InvalidGuessedLetterException):
         word.perform_attempt('xyz')
 
 
-def test_guess_word_with_correct_character():
+def test_guess_word_with_correct_character(): #pass
     word = GuessWord('Python')
     attempt = word.perform_attempt('y')
 
@@ -32,7 +32,7 @@ def test_guess_word_with_correct_character():
     assert word.masked == '*y****'
 
 
-def test_guess_word_with_miss_character():
+def test_guess_word_with_miss_character(): #pass
     word = GuessWord('Python')
     attempt = word.perform_attempt('z')
 
@@ -42,7 +42,7 @@ def test_guess_word_with_miss_character():
     assert word.masked == '******'
 
 
-def test_guess_word_with_repeated_elements():
+def test_guess_word_with_repeated_elements(): #pass
     word = GuessWord('rmotr')
     attempt = word.perform_attempt('r')
 
@@ -52,7 +52,7 @@ def test_guess_word_with_repeated_elements():
     assert word.masked == 'r***r'
 
 
-def test_guess_word_with_all_equal_characters():
+def test_guess_word_with_all_equal_characters(): #pass
     word = GuessWord('aaa')
     attempt = word.perform_attempt('a')
 
@@ -62,7 +62,7 @@ def test_guess_word_with_all_equal_characters():
     assert word.masked == 'aaa'
 
 
-def test_guess_word_with_misses_and_guesses():
+def test_guess_word_with_misses_and_guesses(): #pass
     word = GuessWord('Python')
 
     # Guess 'y' -- Hit!
@@ -96,7 +96,7 @@ def test_guess_word_with_misses_and_guesses():
     assert word.masked == '*y**on'
 
 
-def test_uncover_word_is_case_insensitive_same_case():
+def test_uncover_word_is_case_insensitive_same_case(): #pass
     word = GuessWord('Python')
     attempt = word.perform_attempt('P')
 
@@ -106,7 +106,7 @@ def test_uncover_word_is_case_insensitive_same_case():
     assert word.masked == 'p*****'
 
 
-def test_uncover_word_is_case_insensitive_different_case():
+def test_uncover_word_is_case_insensitive_different_case(): #pass
     word = GuessWord('Python')
     attempt = word.perform_attempt('p')
 
