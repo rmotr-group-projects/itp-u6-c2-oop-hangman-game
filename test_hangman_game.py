@@ -1,3 +1,4 @@
+
 import pytest
 from hangman.game import HangmanGame, GuessWord
 from hangman.exceptions import *
@@ -172,8 +173,6 @@ def test_game_wins_first_try():
     assert game.remaining_misses == 5
     assert game.previous_guesses == ['a']
     assert game.word.masked == 'aaa'
-
-
 def test_game_loses_first_try():
     game = HangmanGame(['Python'], number_of_guesses=1)
 

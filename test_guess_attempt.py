@@ -1,3 +1,4 @@
+
 import pytest
 from hangman.game import GuessAttempt
 from hangman.exceptions import InvalidGuessAttempt
