@@ -2,26 +2,26 @@ import pytest
 from hangman.game import GuessWord
 from hangman.exceptions import *
 
-
+# done
 def test_guessed_word_interface():
     word = GuessWord('xyz')
     assert word.answer == 'xyz'
     assert word.masked == '***'
 
-
+# done
 def test_guess_word_with_empty_word():
     """Words are empty."""
     with pytest.raises(InvalidWordException):
         GuessWord('')
 
-
+# done
 def test_guess_word_with_invalid_character():
     """Character to guess has len() > 1."""
     word = GuessWord('aaa')
     with pytest.raises(InvalidGuessedLetterException):
         word.perform_attempt('xyz')
 
-
+# done
 def test_guess_word_with_correct_character():
     word = GuessWord('Python')
     attempt = word.perform_attempt('y')
@@ -31,7 +31,7 @@ def test_guess_word_with_correct_character():
 
     assert word.masked == '*y****'
 
-
+# done
 def test_guess_word_with_miss_character():
     word = GuessWord('Python')
     attempt = word.perform_attempt('z')
@@ -41,7 +41,7 @@ def test_guess_word_with_miss_character():
 
     assert word.masked == '******'
 
-
+# done
 def test_guess_word_with_repeated_elements():
     word = GuessWord('rmotr')
     attempt = word.perform_attempt('r')
@@ -51,7 +51,7 @@ def test_guess_word_with_repeated_elements():
 
     assert word.masked == 'r***r'
 
-
+# done
 def test_guess_word_with_all_equal_characters():
     word = GuessWord('aaa')
     attempt = word.perform_attempt('a')
@@ -61,7 +61,7 @@ def test_guess_word_with_all_equal_characters():
 
     assert word.masked == 'aaa'
 
-
+# done
 def test_guess_word_with_misses_and_guesses():
     word = GuessWord('Python')
 
@@ -95,7 +95,7 @@ def test_guess_word_with_misses_and_guesses():
     assert attempt.is_miss() is True
     assert word.masked == '*y**on'
 
-
+# done
 def test_uncover_word_is_case_insensitive_same_case():
     word = GuessWord('Python')
     attempt = word.perform_attempt('P')
@@ -105,7 +105,7 @@ def test_uncover_word_is_case_insensitive_same_case():
 
     assert word.masked == 'p*****'
 
-
+# done
 def test_uncover_word_is_case_insensitive_different_case():
     word = GuessWord('Python')
     attempt = word.perform_attempt('p')
