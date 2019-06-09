@@ -81,8 +81,9 @@ class HangmanGame(object):
                 raise GameWonException
         return self.word.perform_attempt(guess)
     
-    def select_random_word(list_of_words):
-        if not list_of_words:
+    @staticmethod
+    def select_random_word(list_of_words=[]):
+        if list_of_words == []:
             raise InvalidListOfWordsException
         choice = random.choice(list_of_words)
         choice = choice.lower()
