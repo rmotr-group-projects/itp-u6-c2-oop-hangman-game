@@ -24,3 +24,7 @@ class InvalidGuessedLetterException(Exception):
 
 class InvalidGuessAttempt(Exception):
     pass
+
+
+class InvalidNumberOfGuesses(Exception):
+    pass

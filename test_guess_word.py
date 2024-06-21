@@ -5,7 +5,7 @@ from hangman.exceptions import *
 
 def test_guessed_word_interface():
     word = GuessWord('xyz')
-    assert word.answer == 'xyz'
+    assert word._word == 'xyz'
     assert word.masked == '***'
 
 
